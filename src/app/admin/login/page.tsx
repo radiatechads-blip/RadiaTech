@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { LockKeyhole, Mail } from "lucide-react";
+import { Lock, Mail, ArrowRight } from "lucide-react";
 import { companyInfo } from "@/data/company";
 
 export default function AdminLoginPage() {
@@ -27,7 +27,7 @@ export default function AdminLoginPage() {
 
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Login failed");
+        setError(data.error || "Invalid credentials");
         return;
       }
 
@@ -40,38 +40,63 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-100 px-4 py-10 sm:px-6">
-      <section className="w-full max-w-md border border-slate-200 bg-white p-6 shadow-xl sm:p-8">
-        <div className="mb-8 text-center">
-          <Image src="/LOGO.png" alt={companyInfo.name} width={72} height={72} className="mx-auto h-16 w-16 object-contain" priority />
-          <h1 className="mt-4 text-2xl font-bold text-primary">Radiatech Electra</h1>
-          <p className="mt-1 text-sm text-slate-500">Admin Login</p>
+    <main className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
+      {/* Increased max-width to 480px and padding to p-12 */}
+      <section className="w-full max-w-[480px] bg-white p-12 rounded-3xl shadow-2xl shadow-gray-200/60 border border-gray-100">
+        
+        {/* Header - Larger sizing */}
+        <div className="flex flex-col items-center mb-10">
+          <div className="w-20 h-20 bg-gray-900 rounded-3xl flex items-center justify-center mb-8 shadow-xl shadow-gray-900/10">
+            <Image src="/LOGO.png" alt={companyInfo.name} width={48} height={48} className="object-contain" priority />
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900">Welcome Back</h1>
+          <p className="text-base text-gray-500 mt-2">Sign in to your Radiatech admin panel</p>
         </div>
 
-        <div className="mb-6 border-b border-slate-100 pb-5">
-          <h2 className="text-xl font-semibold text-slate-950">Sign in to continue</h2>
-          <p className="mt-1 text-sm text-slate-500">Enter your registered admin credentials.</p>
-        </div>
+        {error && (
+          <div className="mb-8 bg-red-50 border border-red-100 text-red-600 text-sm font-bold px-6 py-4 rounded-xl animate-in fade-in">
+            {error}
+          </div>
+        )}
 
-        {error && <div className="mb-4 border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-3">
+            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Email</label>
+            <div className="relative group">
+              <Mail size={20} className="absolute left-4 top-4 text-gray-400 group-focus-within:text-accent transition-colors" />
+              <input 
+                type="email" 
+                required 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                className="w-full bg-gray-50 border border-gray-200 rounded-2xl py-4 pl-12 pr-4 text-base font-medium focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all"
+                placeholder="admin@radiatech.in" 
+              />
+            </div>
+          </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <label className="block">
-            <span className="mb-1 block text-sm font-medium text-slate-700">Email</span>
-            <span className="relative block">
-              <Mail size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-              <input type="email" required value={email} onChange={(event) => setEmail(event.target.value)} className="admin-input pl-10" placeholder="admin@radiatech.in" />
-            </span>
-          </label>
-          <label className="block">
-            <span className="mb-1 block text-sm font-medium text-slate-700">Password</span>
-            <span className="relative block">
-              <LockKeyhole size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-              <input type="password" required value={password} onChange={(event) => setPassword(event.target.value)} className="admin-input pl-10" placeholder="Enter password" />
-            </span>
-          </label>
-          <button type="submit" disabled={loading} className="w-full bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark disabled:opacity-60">
-            {loading ? "Signing in..." : "Sign In"}
+          <div className="space-y-3">
+            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Password</label>
+            <div className="relative group">
+              <Lock size={20} className="absolute left-4 top-4 text-gray-400 group-focus-within:text-accent transition-colors" />
+              <input 
+                type="password" 
+                required 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                className="w-full bg-gray-50 border border-gray-200 rounded-2xl py-4 pl-12 pr-4 text-base font-medium focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all"
+                placeholder="••••••••" 
+              />
+            </div>
+          </div>
+
+          <button 
+            type="submit" 
+            disabled={loading} 
+            className="w-full bg-gray-900 hover:bg-black text-white py-4 rounded-2xl text-base font-bold flex items-center justify-center gap-3 transition-all mt-8 shadow-lg shadow-gray-900/20 disabled:opacity-70"
+          >
+            {loading ? "Authenticating..." : "Sign In"}
+            {!loading && <ArrowRight size={20} />}
           </button>
         </form>
       </section>
