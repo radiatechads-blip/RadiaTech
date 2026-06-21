@@ -93,7 +93,7 @@ export default function AdminLoginPage() {
           <button 
             type="submit" 
             disabled={loading} 
-            className="w-full bg-gray-900 hover:bg-black text-white py-4 rounded-2xl text-base font-bold flex items-center justify-center gap-3 transition-all mt-8 shadow-lg shadow-gray-900/20 disabled:opacity-70"
+            className="w-full bg-gray-900 hover:bg-black text-white py-4 rounded-2xl text-base font-bold flex items-center justify-center gap-3 transition-all mt-8 shadow-lg shadow-gray-900/20 disabled:opacity-70 cursor-pointer"
           >
             {loading ? "Authenticating..." : "Sign In"}
             {!loading && <ArrowRight size={20} />}
