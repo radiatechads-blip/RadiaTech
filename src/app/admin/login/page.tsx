@@ -46,7 +46,7 @@ export default function AdminLoginPage() {
         
         {/* Header - Larger sizing */}
         <div className="flex flex-col items-center mb-10">
-          <div className="w-20 h-20 bg-gray-900 rounded-3xl flex items-center justify-center mb-8 shadow-xl shadow-gray-900/10">
+          <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center mb-8 shadow-xl shadow-gray-900/10">
             <Image src="/LOGO.png" alt={companyInfo.name} width={48} height={48} className="object-contain" priority />
           </div>
           <h1 className="text-2xl font-bold text-gray-900">Welcome Back</h1>
