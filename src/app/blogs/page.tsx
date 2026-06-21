@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, ArrowRight, User } from "lucide-react";
-import { getPublishedBlogsPage, parseBlogImages, parseBlogTags } from "@/lib/publicBlogs";
+import { parseBlogImages, parseBlogTags, getPublishedBlogsPage } from "@/lib/publicBlogs";
 
 export const metadata = {
   title: "Blog & Insights - Radiatech Electra",
-  description: "Industry insights, technical guides, and the latest updates on PPR-C piping solutions from Radiatech Electra.",
+  description: "Industry insights, technical guides, and the latest updates on PPR-C piping solutions.",
 };
 
 export const dynamic = "force-dynamic";
@@ -24,71 +24,64 @@ export default async function BlogsPage({ searchParams }: { searchParams: Promis
   const pages = Array.from({ length: pagination.totalPages }, (_, index) => index + 1).filter((item) => item === 1 || item === pagination.totalPages || Math.abs(item - pagination.page) <= 1);
 
   return (
-    <main>
-      <section className="bg-gradient-to-r from-primary-dark to-primary py-16">
-        <div className="max-w-7xl mx-auto px-4 text-white">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-4">Blog & Insights</h1>
-          <p className="text-blue-200 text-lg max-w-2xl">Industry insights, technical guides, and company updates on PPR-C piping solutions.</p>
+    <main className="bg-white">
+      {/* Hero Section */}
+      <section className="bg-primary py-18">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h1 className="text-4xl lg:text-5xl font-extrabold text-white mb-6">Blog & Insights</h1>
+          <p className="text-blue-100 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
+            Industry insights, technical guides, and the latest updates on PPR-C piping solutions.
+          </p>
         </div>
       </section>
 
-      <section className="py-12 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      {/* Blog Grid */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-6">
           {blogs.length === 0 ? (
-            <div className="text-center py-12 sm:py-20"><p className="text-gray-400 text-lg">No blog posts published yet. Check back soon!</p></div>
+            <div className="text-center py-20 text-gray-500">No blog posts published yet. Check back soon!</div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogs.map((blog) => {
                 const tags = parseBlogTags(blog.tags);
                 const thumbnail = blog.coverImage || parseBlogImages(blog.images)[0] || "";
                 return (
-                  <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all card-hover border border-gray-100">
-                    <div className="relative h-52 overflow-hidden bg-gray-100">
+                  <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                    <div className="relative h-60 overflow-hidden">
                       {thumbnail ? (
-                        <Image src={thumbnail} alt={blog.title} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <Image src={thumbnail} alt={blog.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                       ) : (
-                        <div className="h-full w-full bg-gradient-to-br from-primary/10 to-accent/10" />
+                        <div className="h-full w-full bg-gray-100" />
                       )}
-                      {tags[0] && <div className="absolute top-3 left-3"><span className="bg-primary text-white text-xs font-bold px-3 py-1">{tags[0]}</span></div>}
+                      {tags[0] && <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">{tags[0]}</span>}
                     </div>
-                    <div className="p-5">
-                      <div className="flex flex-wrap items-center gap-3 text-gray-500 text-xs mb-3">
-                        <span className="flex items-center gap-1"><Calendar size={14} />{new Date(blog.publishedAt || blog.createdAt).toLocaleDateString("en-IN", { month: "long", day: "numeric", year: "numeric" })}</span>
-                        <span className="flex items-center gap-1"><User size={14} />{blog.author}</span>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <div className="flex items-center gap-4 text-gray-400 text-xs mb-4 font-medium uppercase tracking-wide">
+                        <span className="flex items-center gap-1.5"><Calendar size={14} />{new Date(blog.publishedAt || blog.createdAt).toLocaleDateString("en-IN", { month: "short", day: "numeric" })}</span>
+                        <span className="flex items-center gap-1.5"><User size={14} />{blog.author}</span>
                       </div>
-                      <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors line-clamp-2">{blog.title}</h3>
-                      <p className="text-gray-600 text-sm line-clamp-2 mb-4">{blog.excerpt}</p>
-                      <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold group-hover:gap-2 transition-all">Read More <ArrowRight size={16} /></span>
+                      <h3 className="font-bold text-gray-900 text-lg mb-3 group-hover:text-primary transition-colors line-clamp-2">{blog.title}</h3>
+                      <p className="text-gray-600 text-sm mb-6 flex-grow line-clamp-3">{blog.excerpt}</p>
+                      <span className="inline-flex items-center gap-2 text-primary font-bold text-sm group-hover:gap-3 transition-all">
+                        Read Article <ArrowRight size={16} />
+                      </span>
                     </div>
                   </Link>
                 );
               })}
             </div>
           )}
+
+          {/* Pagination */}
           {pagination.totalPages > 1 && (
-            <div className="mt-10 flex flex-col items-center justify-between gap-4 border border-gray-100 bg-white px-4 py-4 text-sm shadow-sm sm:flex-row">
-              <p className="text-gray-500">Showing page {pagination.page} of {pagination.totalPages}</p>
-              <div className="flex flex-wrap items-center justify-center gap-2">
-                {pagination.page > 1 ? (
-                  <Link href={pageHref(pagination.page - 1)} className="border border-gray-200 px-3 py-2 font-semibold text-gray-600 transition-colors hover:border-primary hover:text-primary">Previous</Link>
-                ) : (
-                  <span className="border border-gray-100 px-3 py-2 font-semibold text-gray-300">Previous</span>
-                )}
-                {pages.map((item, index) => {
-                  const previous = pages[index - 1];
-                  return (
-                    <span key={item} className="flex items-center gap-2">
-                      {previous && item - previous > 1 && <span className="text-gray-400">...</span>}
-                      <Link href={pageHref(item)} className={`min-w-10 border px-3 py-2 text-center font-semibold transition-colors ${item === pagination.page ? "border-primary bg-primary text-white" : "border-gray-200 text-gray-600 hover:border-primary hover:text-primary"}`}>{item}</Link>
-                    </span>
-                  );
-                })}
-                {pagination.page < pagination.totalPages ? (
-                  <Link href={pageHref(pagination.page + 1)} className="border border-gray-200 px-3 py-2 font-semibold text-gray-600 transition-colors hover:border-primary hover:text-primary">Next</Link>
-                ) : (
-                  <span className="border border-gray-100 px-3 py-2 font-semibold text-gray-300">Next</span>
-                )}
-              </div>
+            <div className="mt-16 flex justify-center items-center gap-2">
+              <Link href={pageHref(pagination.page - 1)} className={`px-4 py-2 border rounded-lg ${pagination.page === 1 ? "pointer-events-none text-gray-300" : "hover:border-primary hover:text-primary"}`}>Prev</Link>
+              {pages.map((item) => (
+                <Link key={item} href={pageHref(item)} className={`w-10 h-10 flex items-center justify-center rounded-lg font-bold transition-all ${item === pagination.page ? "bg-primary text-white" : "border hover:border-primary"}`}>
+                  {item}
+                </Link>
+              ))}
+              <Link href={pageHref(pagination.page + 1)} className={`px-4 py-2 border rounded-lg ${pagination.page === pagination.totalPages ? "pointer-events-none text-gray-300" : "hover:border-primary hover:text-primary"}`}>Next</Link>
             </div>
           )}
         </div>
