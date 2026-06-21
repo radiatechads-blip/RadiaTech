@@ -43,14 +43,22 @@ export default function AdminLoginPage() {
     <main className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
       {/* Increased max-width to 480px and padding to p-12 */}
       <section className="w-full max-w-[480px] bg-white p-12 rounded-3xl shadow-2xl shadow-gray-200/60 border border-gray-100">
-        
         {/* Header - Larger sizing */}
         <div className="flex flex-col items-center mb-10">
           <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center mb-8 shadow-xl shadow-gray-900/10">
-            <Image src="/LOGO.png" alt={companyInfo.name} width={48} height={48} className="object-contain" priority />
+            <Image
+              src="/LOGO.png"
+              alt={companyInfo.name}
+              width={48}
+              height={48}
+              className="object-contain"
+              priority
+            />
           </div>
           <h1 className="text-2xl font-bold text-gray-900">Welcome Back</h1>
-          <p className="text-base text-gray-500 mt-2">Sign in to your Radiatech admin panel</p>
+          <p className="text-base text-gray-500 mt-2">
+            Sign in to your Radiatech admin panel
+          </p>
         </div>
 
         {error && (
@@ -61,39 +69,49 @@ export default function AdminLoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-3">
-            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Email</label>
+            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">
+              Email
+            </label>
             <div className="relative group">
-              <Mail size={20} className="absolute left-4 top-4 text-gray-400 group-focus-within:text-accent transition-colors" />
-              <input 
-                type="email" 
-                required 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
+              <Mail
+                size={20}
+                className="absolute left-4 top-4 text-gray-400 group-focus-within:text-accent transition-colors"
+              />
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-gray-50 border border-gray-200 rounded-2xl py-4 pl-12 pr-4 text-base font-medium focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all"
-                placeholder="admin@radiatech.in" 
+                placeholder="admin@radiatech.in"
               />
             </div>
           </div>
 
           <div className="space-y-3">
-            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Password</label>
+            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">
+              Password
+            </label>
             <div className="relative group">
-              <Lock size={20} className="absolute left-4 top-4 text-gray-400 group-focus-within:text-accent transition-colors" />
-              <input 
-                type="password" 
-                required 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
+              <Lock
+                size={20}
+                className="absolute left-4 top-4 text-gray-400 group-focus-within:text-accent transition-colors"
+              />
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-gray-50 border border-gray-200 rounded-2xl py-4 pl-12 pr-4 text-base font-medium focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all"
-                placeholder="••••••••" 
+                placeholder="••••••••"
               />
             </div>
           </div>
 
-          <button 
-            type="submit" 
-            disabled={loading} 
-            className="w-full bg-gray-900 hover:bg-black text-white py-4 rounded-2xl text-base font-bold flex items-center justify-center gap-3 transition-all mt-8 shadow-lg shadow-gray-900/20 disabled:opacity-70 cursor-pointer"
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-gray-900 hover:bg-black text-white py-4 rounded-2xl text-base font-bold flex items-center justify-center gap-3 transition-all mt-8 shadow-lg shadow-gray-900/20 disabled:opacity-70 active:scale-[0.98] active:shadow-md cursor-pointer"
           >
             {loading ? "Authenticating..." : "Sign In"}
             {!loading && <ArrowRight size={20} />}
