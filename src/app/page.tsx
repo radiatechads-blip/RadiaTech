@@ -22,6 +22,7 @@ import {
   getPublicFeaturedProducts,
   getPublicNewArrivals,
 } from "@/lib/publicProducts";
+import { ReactElement } from "react";
 import { getPublicProjectImages } from "@/lib/publicGalleries";
 import { getRecentPublishedBlogs, parseBlogImages } from "@/lib/publicBlogs";
 import ExpandableGallery from "@/components/ExpandableGallery";
@@ -529,7 +530,12 @@ export default async function HomePage() {
               >
                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                   {iconMap[item.icon] ? (
-                    React.cloneElement(iconMap[item.icon], { size: 32 })
+                    React.cloneElement(
+                      iconMap[
+                        item.icon as keyof typeof iconMap
+                      ] as React.ReactElement<Record<string, unknown>>,
+                      { size: 32 },
+                    )
                   ) : (
                     <Shield size={32} />
                   )}
