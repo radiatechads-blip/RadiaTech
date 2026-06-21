@@ -53,119 +53,105 @@ export default function Navbar() {
       </div>
 
       {/* Main Nav */}
-      <nav className="bg-white shadow-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-18">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 shrink-0">
-              <Image src="/LOGO.png" alt="Radiatech Electra" width={48} height={48} className="h-12 w-12 object-contain" priority />
-              <span className="text-base font-bold leading-tight text-primary sm:text-lg">
-                Radiatech <span className="text-accent">Electra</span>
-              </span>
-            </Link>
+      <nav className="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-100">
+  <div className="max-w-7xl mx-auto px-4">
+    <div className="flex items-center justify-between h-20">
+      
+      {/* Logo */}
+      <Link href="/" className="flex items-center gap-2 shrink-0">
+        <Image src="/LOGO.png" alt="Radiatech Electra" width={40} height={40} className="object-contain" priority />
+        <span className="text-lg font-bold text-primary tracking-tight">
+          Radiatech <span className="text-accent">Electra</span>
+        </span>
+      </Link>
 
-            {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) =>
-                link.href === "/products" ? (
-                  <div
-                    key={link.label}
-                    className="relative"
-                    onMouseEnter={() => setDropdownOpen(true)}
-                    onMouseLeave={() => setDropdownOpen(false)}
-                  >
+      {/* Desktop Nav */}
+      <div className="hidden lg:flex items-center gap-1">
+        {navLinks.map((link) =>
+          link.href === "/products" ? (
+            <div
+              key={link.label}
+              className="relative"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <div className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-accent cursor-pointer transition-colors">
+                {link.label}
+                <ChevronDown size={14} className={`transition-transform duration-300 ${dropdownOpen ? "rotate-180" : ""}`} />
+              </div>
+              
+              {dropdownOpen && (
+                <div className="absolute top-full left-0 bg-white shadow-2xl border border-gray-100 py-3 min-w-[220px] rounded-b-xl animate-in fade-in slide-in-from-top-2">
+                  {productLinks.map((child) => (
                     <Link
-                      href={link.href}
-                      className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors rounded-md hover:bg-gray-50 xl:px-4"
+                      key={child.href}
+                      href={child.href}
+                      className="block px-6 py-2.5 text-sm text-gray-600 hover:text-accent hover:bg-gray-50 transition-colors"
                     >
-                      {link.label}
-                      <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
+                      {child.label}
                     </Link>
-                    {dropdownOpen && (
-                      <div className="absolute top-full left-0 bg-white shadow-xl rounded-lg border border-gray-100 py-2 min-w-[240px] animate-fade-in">
-                        {productLinks.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="block px-4 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-primary/5 transition-colors"
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors rounded-md hover:bg-gray-50 xl:px-4"
-                  >
-                    {link.label}
-                  </Link>
-                )
+                  ))}
+                </div>
               )}
             </div>
-
-            {/* CTA + Mobile Toggle */}
-            <div className="flex items-center gap-3">
-              <Link
-                href="/contact"
-                className="hidden md:inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors shadow-lg shadow-accent/20"
-              >
-                Get Best Quote
-              </Link>
-              <button
-                onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-2 text-gray-700 hover:text-primary"
-                aria-label="Toggle menu"
-              >
-                {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Nav */}
-        {mobileOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg animate-fade-in">
-            <div className="px-4 py-4 space-y-1">
-              {navLinks.map((link) => (
-                <div key={link.label}>
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-3 text-sm font-medium text-gray-700 hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                  {link.href === "/products" && productLinks.length > 0 && (
-                    <div className="pl-6 space-y-1">
-                      {productLinks.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => setMobileOpen(false)}
-                          className="block px-4 py-2 text-sm text-gray-500 hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <Link
-                href="/contact"
-                onClick={() => setMobileOpen(false)}
-                className="block text-center bg-accent text-white px-5 py-3 rounded-lg text-sm font-semibold mt-4"
-              >
-                Get Best Quote
-              </Link>
-            </div>
-          </div>
+          ) : (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-accent transition-colors"
+            >
+              {link.label}
+            </Link>
+          )
         )}
-      </nav>
+      </div>
+
+      {/* CTA + Mobile Toggle */}
+      <div className="flex items-center gap-4">
+        <Link
+          href="/contact"
+          className="hidden md:flex bg-accent hover:bg-accent-dark text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-accent/20"
+        >
+          Get Quote
+        </Link>
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="lg:hidden p-2 text-gray-700"
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {/* Mobile Nav */}
+  {mobileOpen && (
+    <div className="lg:hidden bg-white border-b border-gray-100 shadow-xl px-4 py-6 space-y-2 animate-in slide-in-from-top-4">
+      {navLinks.map((link) => (
+        <div key={link.label}>
+          <Link
+            href={link.href}
+            onClick={() => setMobileOpen(false)}
+            className="block px-4 py-3 text-sm font-bold text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+          >
+            {link.label}
+          </Link>
+          {link.href === "/products" && productLinks.map((child) => (
+            <Link
+              key={child.href}
+              href={child.href}
+              onClick={() => setMobileOpen(false)}
+              className="block pl-10 py-2 text-sm text-gray-500 hover:text-accent"
+            >
+              {child.label}
+            </Link>
+          ))}
+        </div>
+      ))}
+    </div>
+  )}
+</nav>
     </>
   );
 }
