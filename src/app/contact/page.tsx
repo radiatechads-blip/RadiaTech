@@ -9,48 +9,59 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <main>
-      <section className="bg-gradient-to-r from-primary-dark to-primary py-16">
-        <div className="max-w-7xl mx-auto px-4 text-white">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-blue-200 text-lg max-w-2xl">Have a question or need a quote? Reach out and our team will get back to you promptly.</p>
+    <main className="bg-white">
+      {/* Hero Section */}
+      <section className="bg-primary py-18">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h1 className="text-4xl lg:text-5xl font-extrabold text-white mb-6">Contact Us</h1>
+          <p className="text-blue-100 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
+            Have a question or need a quote? Reach out and our team will get back to you promptly.
+          </p>
         </div>
       </section>
 
-      <section className="py-12 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Info */}
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h2>
-              <div className="space-y-5">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 text-primary shrink-0"><Phone size={22} /></div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <a href={`tel:${companyInfo.contact.phone}`} className="text-gray-600 hover:text-primary text-sm">{companyInfo.contact.phone}</a>
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-3 gap-16">
+            
+            {/* Contact Info Cards */}
+            <div className="space-y-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Get In Touch</h2>
+              
+              <div className="space-y-6">
+                {[
+                  { icon: Phone, label: "Phone", value: companyInfo.contact.phone, href: `tel:${companyInfo.contact.phone}` },
+                  { icon: Mail, label: "Email", value: companyInfo.contact.email, href: `mailto:${companyInfo.contact.email}` },
+                ].map((item) => (
+                  <div key={item.label} className="flex gap-4">
+                    <div className="bg-primary/5 p-3 rounded-xl h-fit">
+                      <item.icon size={22} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">{item.label}</h3>
+                      <a href={item.href} className="text-gray-600 hover:text-primary transition-colors">{item.value}</a>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 text-primary shrink-0"><Mail size={22} /></div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <a href={`mailto:${companyInfo.contact.email}`} className="text-gray-600 hover:text-primary text-sm">{companyInfo.contact.email}</a>
-                  </div>
-                </div>
-                {companyInfo.addresses.map((addr) => (
-                <div key={addr.label} className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 text-primary shrink-0"><MapPin size={22} /></div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">{addr.label}</h3>
-                    <p className="text-gray-600 text-sm">{addr.address}</p>
-                  </div>
-                </div>
                 ))}
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 text-primary shrink-0"><Clock size={22} /></div>
+                
+                {companyInfo.addresses.map((addr) => (
+                  <div key={addr.label} className="flex gap-4">
+                    <div className="bg-primary/5 p-3 rounded-xl h-fit">
+                      <MapPin size={22} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">{addr.label}</h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">{addr.address}</p>
+                    </div>
+                  </div>
+                ))}
+
+                <div className="flex gap-4">
+                  <div className="bg-primary/5 p-3 rounded-xl h-fit">
+                    <Clock size={22} className="text-primary" />
+                  </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Business Hours</h3>
+                    <h3 className="font-semibold text-gray-900">Business Hours</h3>
                     <p className="text-gray-600 text-sm">Monday - Saturday: 9:00 AM - 6:00 PM</p>
                   </div>
                 </div>
@@ -58,22 +69,19 @@ export default function ContactPage() {
             </div>
 
             {/* Inquiry Form */}
-            <div className="lg:col-span-2 bg-gray-50 p-5 sm:p-8 border border-gray-100">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+            <div className="lg:col-span-2 bg-gray-50 p-8 sm:p-10 rounded-3xl border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Send Us a Message</h2>
               <InquiryForm />
             </div>
           </div>
 
-          {/* Map Embed */}
-          <div className="mt-16 overflow-hidden shadow-lg h-[320px] sm:h-[400px]">
+          {/* Map Embed with Rounded Corners */}
+          <div className="mt-20 rounded-3xl overflow-hidden shadow-2xl h-[400px]">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.123456!2d77.3100!3d28.5800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sNoida%2C+Uttar+Pradesh!5e0!3m2!1sen!2sin!4v1700000000000"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
+              className="w-full h-full border-0"
               allowFullScreen
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
               title="Radiatech Electra Location"
             />
           </div>
