@@ -83,7 +83,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
       </section>
 
       {/* CTA Strip */}
-      <section className="bg-gray-950 py-16 text-white">
+      <section className="bg-gray-700 py-16 text-white">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl font-bold mb-2">Need Expert Assistance?</h3>
