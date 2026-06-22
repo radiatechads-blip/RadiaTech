@@ -21,7 +21,7 @@ export default function CataloguePage() {
             <a href="/RADIATECH-BROCHURE-PIPE.pdf" target="_blank" rel="noopener noreferrer" className="bg-accent hover:bg-accent-dark px-8 py-4 font-bold text-sm text-white transition-all flex items-center gap-2 rounded-2xl">
               <ExternalLink size={16} /> Open Catalogue
             </a>
-            <a href="/RADIATECH-CATALOGUE.pdf" download className="bg-white/10 hover:bg-white/20 border border-white/20 px-8 py-4 font-bold text-sm text-white transition-all flex items-center gap-2 rounded-2xl">
+            <a href="/RADIATECH-BROCHURE-PIPE.pdf" download className="bg-white/10 hover:bg-white/20 border border-white/20 px-8 py-4 font-bold text-sm text-white transition-all flex items-center gap-2 rounded-2xl">
               <Download size={16} /> Download PDF
             </a>
           </div>
