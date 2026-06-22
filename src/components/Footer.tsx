@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { companyInfo } from "@/data/company";
 import useCategoryLinks from "@/components/useCategoryLinks";
 
@@ -10,18 +10,17 @@ export default function Footer() {
   const productLinks = useCategoryLinks();
 
   return (
-    <footer className="bg-gray-950 text-white">
-      {/* Optimized height with balanced vertical spacing */}
-      <div className="max-w-7xl mx-auto px-6 py-10">
+    <footer className="bg-slate-950 text-slate-300">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           
           {/* Company Info */}
           <div className="col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <Image src="/LOGO.png" alt="Logo" width={40} height={40} className="h-10 w-10 object-contain" />
-              <span className="text-base font-bold">Radiatech Electra</span>
+            <div className="flex items-center gap-2 mb-3">
+              <Image src="/LOGO.png" alt="Radiatech Electra" width={32} height={32} className="h-8 w-8 object-contain" />
+              <span className="text-sm font-bold text-white">Radiatech Electra</span>
             </div>
-            <p className="text-blue-100 text-xs leading-relaxed mb-5 line-clamp-3">
+            <p className="text-xs leading-relaxed mb-4 text-slate-400 max-w-sm">
               {companyInfo.about.short}
             </p>
             {/* Icons restored with correct SVG paths */}
@@ -39,41 +38,77 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links */}
+          {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-bold uppercase mb-4 opacity-90">Links</h3>
-            <ul className="space-y-2 text-xs text-blue-100">
-              <li><Link href="/" className="hover:text-white">Home</Link></li>
-              <li><Link href="/about" className="hover:text-white">About Us</Link></li>
-              <li><Link href="/products" className="hover:text-white">Products</Link></li>
-              <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
+            <h3 className="text-sm font-semibold text-white mb-3">Quick Links</h3>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+              {[
+                { label: "Home", href: "/" }, { label: "About Us", href: "/about" },
+                { label: "Products", href: "/products" }, { label: "Catalogue", href: "/catalogue" },
+                { label: "Infrastructure", href: "/infrastructure" }, { label: "Clients", href: "/clients" },
+                { label: "Blogs", href: "/blogs" }, { label: "Contact", href: "/contact" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:text-accent transition-colors text-xs whitespace-nowrap">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Products */}
+          {/* Our Products */}
           <div>
-            <h3 className="text-sm font-bold uppercase mb-4 opacity-90">Products</h3>
-            <ul className="space-y-2 text-xs text-blue-100">
-              {productLinks.slice(0, 5).map((link) => (
-                <li key={link.href}><Link href={link.href} className="hover:text-white">{link.label}</Link></li>
+            <h3 className="text-sm font-semibold text-white mb-3">Our Products</h3>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+              {productLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:text-accent transition-colors text-xs whitespace-nowrap">
+                    {link.label}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div className="col-span-2 lg:col-span-1">
-            <h3 className="text-sm font-bold uppercase mb-4 opacity-90">Contact</h3>
-            <ul className="space-y-3 text-xs text-blue-100">
-              <li className="flex items-start gap-2"><MapPin size={16} className="text-accent shrink-0" /> {companyInfo.addresses[0].address}</li>
-              <li><a href={`tel:${companyInfo.contact.phoneHref}`} className="flex items-center gap-2 hover:text-white"><Phone size={16} className="text-accent" /> {companyInfo.contact.phone}</a></li>
+            <h3 className="text-sm font-semibold text-white mb-3">Get In Touch</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <MapPin size={14} className="text-accent shrink-0 mt-0.5" />
+                <span className="text-xs">{companyInfo.addresses[0].address}</span>
+              </li>
+              <li>
+                <a href={`tel:${companyInfo.contact.phoneHref}`} className="flex items-center gap-2 hover:text-accent transition-colors text-xs">
+                  <Phone size={14} className="text-accent shrink-0" /> {companyInfo.contact.phone}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${companyInfo.contact.email}`} className="flex items-center gap-2 hover:text-accent transition-colors text-xs">
+                  <Mail size={14} className="text-accent shrink-0" /> {companyInfo.contact.email}
+                </a>
+              </li>
             </ul>
-            <Link href="/contact" className="inline-block mt-4 bg-accent text-white px-4 py-2 rounded-lg text-xs font-bold uppercase">Inquiry</Link>
+            <div className="mt-4 flex gap-2">
+              <Link href="/contact" className="bg-accent hover:bg-accent-dark text-white px-4 py-2 rounded text-xs font-semibold transition-colors">Send Inquiry</Link>
+              <a href={companyInfo.social.indiamart} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 border border-white/10 px-4 py-2 rounded text-xs font-semibold text-white hover:bg-white/5 transition-colors">
+                IndiaMART <ExternalLink size={12} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-5 text-xs text-blue-200 text-center">
-        &copy; {new Date().getFullYear()} {companyInfo.fullName}. All Rights Reserved.
+      {/* Bottom Bar */}
+      <div className="border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-2 text-[10px] text-slate-500">
+          <p>&copy; {new Date().getFullYear()} {companyInfo.fullName}. All Rights Reserved.</p>
+          <div className="flex gap-4">
+            <Link href="/about" className="hover:text-slate-300">Privacy Policy</Link>
+            <Link href="/about" className="hover:text-slate-300">Terms of Use</Link>
+          </div>
+        </div>
       </div>
     </footer>
   );
