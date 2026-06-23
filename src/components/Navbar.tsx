@@ -33,10 +33,18 @@ export default function Navbar() {
               <MapPin size={14} />
               Noida, Uttar Pradesh, India
             </span>
-            <a href={`tel:${companyInfo.contact.phoneHref}`} className="flex items-center gap-1 hover:text-accent transition-colors shrink-0">
+            <span className="flex">
+              <a href={`tel:${companyInfo.contact.phoneHref}`} className="flex items-center gap-1 hover:text-accent transition-colors shrink-0">
               <Phone size={14} />
-              {companyInfo.contact.phone}
+              {companyInfo.contact.phone1}
+              
             </a>
+            {" "}/{" "}
+            <a href={`tel:${companyInfo.contact.phoneHref}`} className="flex items-center gap-1 hover:text-accent transition-colors shrink-0">
+              
+              {companyInfo.contact.phone2}
+            </a>
+            </span>
             <a href={`mailto:${companyInfo.contact.email}`} className="hidden sm:flex items-center gap-1 hover:text-accent transition-colors shrink-0">
               <Mail size={14} />
               {companyInfo.contact.email}
