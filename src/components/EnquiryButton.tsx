@@ -43,7 +43,7 @@ export default function EnquiryButton({ productName, label = "Send Enquiry", cla
 
         <div className="p-5">
           <div className="mb-5 grid grid-cols-2 gap-3">
-            <a href={`tel:${companyInfo.contact.phone}`} className="inline-flex items-center justify-center gap-2 bg-primary px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark">
+            <a href={`tel:${companyInfo.contact.phone1}`} className="inline-flex items-center justify-center gap-2 bg-primary px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark">
               <Phone size={16} /> Call Now
             </a>
             <a href={`https://wa.me/${companyInfo.contact.whatsapp}?text=${whatsappText}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#25D366] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1eb858]">
