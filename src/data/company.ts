@@ -13,7 +13,8 @@ export const companyInfo = {
   
   contact: {
     email: "radiatechelectra@gmail.com",
-    phone: "+91 81788 50959",
+    phone1: "+91 81788 50959",
+    phone2: "+91 94578 93678",
     phoneHref: "+918178850959",
     whatsapp: "918178850959",
     website: "www.radiatech.in",
