@@ -18,10 +18,10 @@ export default function CataloguePage() {
             Browse our complete product range online or download the official PDF for offline reference.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="/RADIATECH-BROCHURE-PIPE.pdf" target="_blank" rel="noopener noreferrer" className="bg-accent hover:bg-accent-dark px-8 py-4 font-bold text-sm text-white transition-all flex items-center gap-2 rounded-2xl">
+            <a href="/CATALOGUE-PPR.pdf" target="_blank" rel="noopener noreferrer" className="bg-accent hover:bg-accent-dark px-8 py-4 font-bold text-sm text-white transition-all flex items-center gap-2 rounded-2xl">
               <ExternalLink size={16} /> Open Catalogue
             </a>
-            <a href="/RADIATECH-BROCHURE-PIPE.pdf" download className="bg-white/10 hover:bg-white/20 border border-white/20 px-8 py-4 font-bold text-sm text-white transition-all flex items-center gap-2 rounded-2xl">
+            <a href="/RADIATECH-CATALOGUE.pdf" download className="bg-white/10 hover:bg-white/20 border border-white/20 px-8 py-4 font-bold text-sm text-white transition-all flex items-center gap-2 rounded-2xl">
               <Download size={16} /> Download PDF
             </a>
           </div>
@@ -70,7 +70,7 @@ export default function CataloguePage() {
           </div>
 
           <div className="h-[70vh] rounded-3xl overflow-hidden shadow-lg border-4 border-white bg-white">
-            <iframe src="/RADIATECH-BROCHURE-PIPE.pdf#view=FitH" title="Pipe & Fittings Brochure" className="h-full w-full" />
+            <iframe src="/CATALOGUE-PPR.pdf#view=FitH" title="Pipe & Fittings Brochure" className="h-full w-full" />
           </div>
         </div>
       </section>
