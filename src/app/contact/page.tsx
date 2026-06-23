@@ -30,7 +30,8 @@ export default function ContactPage() {
               
               <div className="space-y-6">
                 {[
-                  { icon: Phone, label: "Phone", value: companyInfo.contact.phone, href: `tel:${companyInfo.contact.phone}` },
+                  { icon: Phone, label: "Phone", value: companyInfo.contact.phone1, href: `tel:${companyInfo.contact.phone1}` },
+                  { icon: Phone, label: "Phone", value: companyInfo.contact.phone2, href: `tel:${companyInfo.contact.phone2}` },
                   { icon: Mail, label: "Email", value: companyInfo.contact.email, href: `mailto:${companyInfo.contact.email}` },
                 ].map((item) => (
                   <div key={item.label} className="flex gap-4">
@@ -62,7 +63,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Business Hours</h3>
-                    <p className="text-gray-600 text-sm">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                    <p className="text-gray-600 text-sm">Monday - Saturday: 10:00 AM - 7:00 PM</p>
                   </div>
                 </div>
               </div>
