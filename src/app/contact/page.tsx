@@ -31,7 +31,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 {[
                   { icon: Phone, label: "Phone-1", value: companyInfo.contact.phone1, href: `tel:${companyInfo.contact.phone1}` },
-                  { icon: Phone, label: "Phone"-2, value: companyInfo.contact.phone2, href: `tel:${companyInfo.contact.phone2}` },
+                  { icon: Phone, label: "Phone-2", value: companyInfo.contact.phone2, href: `tel:${companyInfo.contact.phone2}` },
                   { icon: Mail, label: "Email", value: companyInfo.contact.email, href: `mailto:${companyInfo.contact.email}` },
                 ].map((item) => (
                   <div key={item.label} className="flex gap-4">
