@@ -64,7 +64,7 @@ export default async function HomePage() {
         {/* BACKGROUND: Kept as requested */}
         <div className="absolute inset-0">
           <Image
-            src="/images/p4.png"
+            src="/images/p4(1).png"
             alt=""
             fill
             priority
