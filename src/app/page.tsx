@@ -64,7 +64,7 @@ export default async function HomePage() {
         {/* BACKGROUND: Kept as requested */}
         <div className="absolute inset-0">
           <Image
-            src="/images/herobg.png"
+            src="/images/p4.png"
             alt=""
             fill
             priority
@@ -203,7 +203,7 @@ export default async function HomePage() {
 
               <div className="relative mb-6 h-[280px] rounded-2xl overflow-hidden shadow-lg lg:hidden">
                 <Image
-                  src="/images/aboutus.png"
+                  src="/images/p3.png"
                   alt="About Radiatech Electra"
                   fill
                   sizes="100vw"
