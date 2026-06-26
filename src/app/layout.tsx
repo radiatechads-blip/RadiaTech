@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SiteFrame from "@/components/SiteFrame";
+import PopupModal from "@/components/PopupModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -138,6 +139,7 @@ export default function RootLayout({
           <p style={{ fontSize: "1.5rem" }}>📞 9621492080</p>
         </div> */}
         <SiteFrame>
+          <PopupModal />
           {children}
         </SiteFrame>
       </body>
