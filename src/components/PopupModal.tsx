@@ -38,7 +38,7 @@ export default function PopupModal() {
             src="/images/Popup-Banner.png"
             alt="Promotion"
             fill
-            className="object-cover"
+            className="object-contain"
           />
         </div>
       </div>
