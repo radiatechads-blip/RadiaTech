@@ -11,7 +11,7 @@ export default function ContactPage() {
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section className="bg-primary py-18">
+      <section className="bg-primary py-5">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-4xl lg:text-5xl font-extrabold text-white mb-6">Contact Us</h1>
           <p className="text-blue-100 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
