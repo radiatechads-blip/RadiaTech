@@ -73,7 +73,7 @@ export default function Navbar() {
         <div className="relative max-w-7xl mx-auto h-[48px] flex">
           {/* Left */}
           <Link
-            href="https://radia-tech.vercel.app"
+            href="https://www.radiatech.in/"
             className="group w-1/2 flex items-center justify-center transition-all duration-300"
           >
             <div className="text-center text-white">
