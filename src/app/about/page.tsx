@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <main className="overflow-hidden">
       {/* Hero: Modern Gradient with soft overlay */}
-      <section className="relative bg-primary py-18">
+      <section className="relative bg-primary py-5">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <h1 className="text-5xl lg:text-7xl font-extrabold text-white tracking-tight mb-6">
