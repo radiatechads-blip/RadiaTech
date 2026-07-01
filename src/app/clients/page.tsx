@@ -21,7 +21,7 @@ export default function ClientsPage() {
       </section>
 
       {/* Client Logos Section */}
-      <section className="py-20">
+      <section className="py-5">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-gray-900 mb-16 text-center">Our Valued Clients</h2>
           
