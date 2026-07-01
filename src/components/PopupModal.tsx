@@ -4,7 +4,15 @@ import Image from "next/image";
 import { X, Phone, Mail } from "lucide-react";
 
 export default function PopupModal() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   if (!isOpen) return null;
 
