@@ -36,7 +36,7 @@ export default async function BlogsPage({ searchParams }: { searchParams: Promis
       </section>
 
       {/* Blog Grid */}
-      <section className="py-20">
+      <section className="py-5">
         <div className="max-w-7xl mx-auto px-6">
           {blogs.length === 0 ? (
             <div className="text-center py-20 text-gray-500">No blog posts published yet. Check back soon!</div>
