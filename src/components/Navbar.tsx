@@ -61,7 +61,7 @@ export default function Navbar() {
       </div>
 
       {/* WebsiteSwitchBar */}
-      <section className="relative overflow-hidden">
+      {/* <section className="relative overflow-hidden">
         {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B4EA2] via-[#5B2DA8] to-[#D90429]" />
 
@@ -91,7 +91,7 @@ export default function Navbar() {
             </div>
           </a>
         </div>
-      </section>
+      </section> */}
 
       {/* Main Nav */}
       <nav className="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-100">
