@@ -136,7 +136,7 @@ export default function RootLayout({
       <body className="min-h-full bg-white text-[#111] antialiased">
         {/* <div style={{ fontFamily: "sans-serif", color: "#111", textAlign: "center" }}>
           <p style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>Please contact to developer</p>
-          <p style={{ fontSize: "1.5rem" }}>📞 9621492080</p>
+          <p style={{ fontSize: "1.5rem" }}>📞 7239066492</p>
         </div> */}
         <SiteFrame>
           <PopupModal />
