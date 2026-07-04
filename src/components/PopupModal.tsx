@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { X, Phone, Mail } from "lucide-react";
+import { X, Phone, Globe } from "lucide-react";
 
 export default function PopupModal() {
   const [isOpen, setIsOpen] = useState(false);
