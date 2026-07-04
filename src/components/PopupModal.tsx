@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { X, Phone, Globe } from "lucide-react";
+import { X, Phone,Mail, Globe } from "lucide-react";
 
 export default function PopupModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,6 +61,12 @@ export default function PopupModal() {
             >
               <Phone size={20} /> Call Now
             </a>
+            <a
+              href="mailto:radiatechelectra@gmail.com"
+             className="flex items-center gap-2 px-16 py-4 bg-gray-600 hover:bg-gray-700 text-white rounded-full font-bold transition-colors text-base"
+            >
+             <Mail size={20} /> Email
+    </a>
             <a
               href="https://www.radiatechfire.in"
               className="flex items-center gap-2 px-16 py-4 bg-red-600 hover:bg-red-700 shadow-lg hover:shadow-xl hover:scale-105 text-white rounded-full font-bold transition-all duration-300 text-base"
