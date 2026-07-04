@@ -63,7 +63,7 @@ export default function PopupModal() {
             </a>
             <a
               href="https://www.radiatechfire.in"
-              className="flex items-center gap-2 px-16 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold transition-colors text-base"
+              className="flex items-center gap-2 px-16 py-4 bg-red-600 hover:bg-red-700 shadow-lg hover:shadow-xl hover:scale-105 text-white rounded-full font-bold transition-all duration-300 text-base"
             >
              <Globe size={20} /> Fire & Safety
             </a>
