@@ -65,7 +65,7 @@ export default function PopupModal() {
               href="https://www.radiatechfire.in"
               className="flex items-center gap-2 px-16 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold transition-colors text-base"
             >
-             <Globe size={20} />🔥Website
+             <Globe size={20} /> Fire & Safety
             </a>
           </div>
 
