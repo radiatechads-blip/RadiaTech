@@ -94,6 +94,8 @@ export const companyInfo = {
     { name: "PCBL", image: "/images/clients/pcbl.png" },
     { name: "Stafford Laboratories", image: "/images/clients/STAFFORD LABORATORIES.png" },
     { name: "Triveni", image: "/images/clients/triveni.jpg" },
+    { name: "WAVE GROUP", image: "/images/clients/Wave.png" },
+    { name: "MAHINDRA", image: "/images/clients/MAHINDRA.jpg" }
   ],
   
   statsItems: [
