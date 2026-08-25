@@ -4,7 +4,7 @@ export const companyInfo = {
   tagline: "Powering Industrial Innovation",
   established: 2021,
   ceo: "R Singh",
-  employees: "11 to 25",
+  employees: "25 to 50",
   experience: "5+",
   clients: "300+",
   projects: "1000+",
@@ -82,13 +82,17 @@ export const companyInfo = {
   ],
   
   clientLogos: [
-    { name: "Aditya Birla Hindalco", image: "/images/clients/aditya birla hindalko.jpg" },
+  { name: "Aditya Birla Hindalco", image: "/images/clients/aditya birla hindalko.jpg" },
     { name: "Bajaj Sugar", image: "/images/clients/bajaj sugar.png" },
+    { name: "BIOURE", image: "/images/clients/BIOURE.jpg" },
     { name: "CRD Group", image: "/images/clients/crd group.png" },
     { name: "Dalmia Bharat", image: "/images/clients/dalima bharat.jpg" },
+    { name: "DCM Shriram", image: "/images/clients/DCM SHRIRAM.png" },
     { name: "Hero", image: "/images/clients/hero.png" },
     { name: "IBIS Hotel", image: "/images/clients/ibis hotel.jpg" },
+    { name: "OCCL", image: "/images/clients/OCCL.png" },
     { name: "PCBL", image: "/images/clients/pcbl.png" },
+    { name: "Stafford Laboratories", image: "/images/clients/STAFFORD LABORATORIES.png" },
     { name: "Triveni", image: "/images/clients/triveni.jpg" },
   ],
   
