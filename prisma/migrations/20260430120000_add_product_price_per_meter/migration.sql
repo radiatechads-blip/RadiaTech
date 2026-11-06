@@ -1,1 +1,0 @@
-ALTER TABLE "Product" ADD COLUMN "pricePerMeter" TEXT NOT NULL DEFAULT '';
